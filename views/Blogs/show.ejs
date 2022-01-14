@@ -1,0 +1,227 @@
+
+<% layout('layout/boilerplate')%>
+<script>
+    if(nextid.equals(post._id))
+     {
+        buttonnext= document.querySelector('#colornext');
+        buttonnext.disabled=true;
+     }
+</script>
+<style>
+    body{
+    background-color: hsl(171, 100%, 41%);
+   }
+ #colorme{
+     background-color: hsl(171, 100%, 41%);
+ }
+ #colort, #colorprevious, #colornext,#likes{
+     color: hsl(171, 100%, 41%);
+ }
+ #username{
+    font-size: 20px;
+    color:hsl(171, 100%, 41%);
+ }
+#grid1,#grid2{
+    display:grid;
+    border-radius: 30px;  
+}
+#grid1{
+    max-height: 600px;
+}
+#rightcard{
+    border-radius: 30px;
+
+}
+#blog{
+    grid-column: 1;
+    
+    background-color: black;
+}
+#comment{
+    grid-column: 2;
+}
+#image{
+    
+    border-radius: 20px;
+    max-width: 500px;
+   max-height: 400px;
+}
+#imagediv
+{
+    display: flex;
+    justify-content: center;
+}
+
+#cardheader{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+#cardfooter{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+#cardfooter2{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: relative;
+    bottom: 0;
+}
+#commentcard{
+    max-height:60px;
+    
+}
+#commentcontent{
+    max-width: 200px;
+    
+}
+#textcenter{
+    display: flex;
+    justify-content: center;
+}
+
+#undernav ul li a{
+  text-decoration-line: none;
+  color: #fff;
+}
+#leftcard{
+    max-height: 100px;
+}
+
+</style>
+<!-- <script>
+    let getid;
+    for(let post of posts){ 
+        if(post._id === post._id){ 
+            getid=post._id;
+        }
+    } 
+</script> -->
+
+<!-- <span> `currentid=${post._id} | nextid=${nextid}` </span> -->
+<div class="row">
+    
+
+    <div class="col">
+        <div>
+            <a class=" btn btn-light mb-2 p-3 rounded-pill shadow-lg" id="colorprevious" href="/main/<%= nextid %> "><i class="fas fa-arrow-left mr-2"> </i><strong><b>PREVIOUS</b></strong> </a>
+        </div>
+        
+    </div>
+    <div class="col">
+        <div class="d-flex justify-content-center">
+            <%- include('../partials/flash')%>
+        </div>
+         
+    </div>
+    <div class="col ">
+        <div class="d-flex justify-content-end">
+            <a class=" btn btn-light mb-2 p-3 rounded-pill shadow-lg " id="colornext" href="/main/<%= previd %> "><strong><b>NEXT</b></strong> <i class="fas fa-arrow-right ml-2"> </i></a>
+        </div>
+        
+    </div>
+    
+</div>
+<div class="row mt-0 pt-0 mb-3 mx-1" id="template">
+    <div class="card col-lg-8 mx-0 p-0 shadow-lg" id="grid1" >
+        <div class="card-header" id="cardheader">
+            <% if(post.author.thumbnail){ %> 
+                <img class="btn rounded-circle m-0 p-0 shadow-lg" src="<%= post.author.thumbnail %> " id="dp" width="40px" height="40px" alt="">
+            <% }else{ %> 
+                <img class="btn rounded-circle m-0 p-0 shadow-lg" src="https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg" id="dp" width="30px" height="30px" alt="">
+            <% } %> 
+            <strong><b class="mx-4" id="username">By   <%= post.author.username %></b> </strong>
+        </div>
+        <div class="carousel" id="imagediv">
+            <div class="carousel slide" data-ride="carousel" id="carouselimg">
+                <div class="carousel-inner">
+                    <% post.image.forEach((img, i) => {  %>
+                        <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                        <img class="card-img-top py-1 px-1 d-block" id="image" src="<%=img.url%>"  alt="">
+                    </div>
+                    <% } )%> 
+                </div>
+                <% if(post.image.length > 1) {%>
+                <a class="carousel-control-prev" href="#imagediv" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#imagediv" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <% } %> 
+            </div>
+        </div>
+         <div class="card-body">
+           <h5 class="card-title " id="textcenter"><%= post.title %></h5>
+           
+         </div>
+         <ul class="list-group list-group-flush " id="newfoot">
+            <p class="card-text p-3 m-1" id="textcenter"><%= post.content %></p>
+         </ul>
+           <div class="card-footer" id="cardfooter">
+               
+                <% if(currentUser && post.author.equals(currentUser._id)){ %>
+                    <a href="/main/<%= post._id %>/edit" class="btn shadow-lg text-light" id="colorme"><b>EDIT</b></a>
+                      <form class="btn mb-0 mr-5" action="/main/<%= post._id %>?_method=DELETE" method="post">
+                         <button class=" btn btn-danger shadow-lg" ><b>DELETE</b></button>
+                      </form>
+                <% } %> 
+            
+            <li class="list-group-item"><%= post.date.toDateString() %></li> 
+           </div>  
+            
+    </div>
+    <div class="col-lg-4  mx-0 p-0 shadow-lg" id="grid2">
+        <div class="card" id="rightcard">
+                <div class="" id="comment">
+                    <div class="card-header " id="cardheader"> <strong>Comments</strong></div>
+                    <div id="commentcontent container">
+                       <% for(let comment of post.comments){ %> 
+                        <div class="p-2 m-2  row">
+                            <div class="card rounded-pill col" id="commentcard" >
+                                
+                                  <span class="m-2"><%= comment.body %></span>  
+    
+                            </div>
+                            <% if( currentUser && comment.author.equals(currentUser._id)){ %>
+                            <form class="col-auto" action="/main/<%= post._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
+                                <button class=" p-2 btn btn-danger rounded-circle m-2 shadow-lg"><i class="fas fa-minus m-1"></i></button>
+                            </form> 
+                            <% }else{ %> 
+                                <img class="btn rounded-pill m-0 p-0 shadow-lg col-auto" src="<%= post.author.thumbnail %> " id="dp" width="40px" height="40px" alt="">
+                                
+                            <% } %> 
+                        </div>
+                        
+                        <% } %> 
+                    </div>
+                    <div class="card-footer container-fluid" id="cardfooter2">
+                         <form class="validated-form row" action="/main/<%= post._id %>/comments" method="post" novalidate>
+                             <div class="col">
+                                 <div class=""><textarea class="form-control p-2 m-2 rounded-pill shadow-lg" name="comment[body]" id="body" cols="30" rows="1" maxlength="50" required></textarea> </div>
+                             </div>
+                             
+                             <div class="col-auto" >
+                                <button class=" p-2 btn btn-success rounded-circle m-2 shadow-lg"    ><i class="fas fa-plus m-1"></i></button>
+                             </div>
+                            
+                         </form>
+                   </div>
+               </div>
+        </div>
+        
+    </div>
+    
+</div>
+
+<!-- <div class=" d-lg-none  p-2 m-2" >
+    <div>Comment</div>
+</div> -->
+
+
+
+
+
+
+ 

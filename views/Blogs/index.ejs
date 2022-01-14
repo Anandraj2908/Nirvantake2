@@ -1,0 +1,73 @@
+<% layout('layout/boilerplate')%>
+<style>
+    a{
+        color: hsl(171, 100%, 41%);
+    }
+    #card{
+        border-radius: 15px;
+        border-color: hsl(171, 100%, 41%);
+        border-width: 5px;
+        max-width: 600px;
+        background-color: hsl(171, 100%, 41%);
+    }
+    #cardheader{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    }
+    #cardtext{
+        text-decoration-line: none;
+        color:white;
+        
+    }
+    a:hover{
+        color:hsl(171, 100%, 41%);
+    }
+    #date{
+        font-size:x-small;
+    }
+   /*  #title{
+        background-color: hsl(171, 100%, 41%);
+        color: white;
+    } */
+    #image{
+        border-radius: 10px;
+        max-height: 400px;
+        min-width: 200px;
+    }
+    @media(min-width:1017px){
+        #image{
+             min-width: 300px;
+        }
+        #card{
+            min-width: 150px;
+            min-height: 100px;
+        }
+    }
+    @media(max-width:1016px){
+        #card{
+            min-width: 110px;
+        }
+    }
+  
+</style>
+<%- include('../partials/flash')%>
+<div class="row container-fluid mx-auto justify-content-center">
+    <% for(let i=posts.length-1;i>=0;i--){ %> 
+        <div class="col">
+            <div class="card m-2 " id="card">
+                
+                <a class="text-decoration-none" id="cardtext" href="/main/<%= posts[i]._id %> ">
+                    
+                    <% if(posts[i].image.length){ %> 
+                    <img class="card-img-top d-flex justify-content-center" id="image" src="<%= posts[i].image[0].url %>"  alt="">
+                    <% } %>
+                    <h4 class="pt-1 m-2 d-flex card-title" id="title"><%= posts[i].title %> </h4>
+                    <h5 class="m-2 pt-2">By: <%= posts[i].author.username %> </h5>
+                    <span class=" mx-2" id="date"><%= posts[i].date.toDateString() %> </span>
+                       
+                </a>
+            </div>
+        </div>
+    <% } %>  
+
+</div>

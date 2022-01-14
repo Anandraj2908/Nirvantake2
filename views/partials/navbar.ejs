@@ -1,0 +1,133 @@
+<style>
+  #primary {
+    color: hsl(171, 100%, 41%);
+  }
+
+  #btnn {
+    background-color: hsl(171, 100%, 41%);
+    color: white;
+
+  }
+
+  #dp {
+    border-radius: 70%;
+  }
+
+  nav {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .navcorner button {
+
+
+    background: transparent;
+    border: 0;
+    font-size: 26px;
+    color: hsl(171, 100%, 41%);
+    cursor: pointer;
+  }
+
+  .navcorner button:focus {
+    outline: 0;
+  }
+
+
+
+  .navcorner button#close {
+
+    transform: rotate(90deg);
+  }
+
+  #profiledropdown {
+    color: hsl(171, 100%, 41%);
+  }
+</style>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light  pb-0 pt-1 shadow-lg">
+  <div class="container">
+    <div class="navcorner">
+      <div class="row">
+        <div class="col">
+          <button id="toggler" class="d-lg-none mt-1">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <div class="col">
+          <a class="navbar-brand  mr-3" id="primary" href="/">
+            <h2> <b><strong> NIRVAN</strong></b><i class="tech">.tech</i></h2>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+    <a class="col-lg d-lg-none p-2 btn btn-warning rounded-pill mx-2 my-2 justify-content-end shadow-lg" id="post"
+      href="/main/new">POST <i class="fas fa-plus ml-3"></i></a>
+    <!-- <button class="navbar-toggler p-2 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-align-justify"></i>
+        </button> -->
+    <!-- new changes starts here -->
+
+
+
+
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active " id="primary" href="/">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="primary" href="/main">MENU</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="primary" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            MORE
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <li><a class="dropdown-item" id="primary" href="#">Information</a></li>
+            <li>
+              <hr class="dropdown-divider text-dark">
+            </li>
+            <li><a class="dropdown-item" id="primary" href="/curiosity">Curiosity</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="navbar-nav ml-auto">
+        <a class="d-none d-lg-inline btn btn-warning mx-2 my-2 rounded-pill shadow-lg" href="/main/new">POST <i
+            class="fas fa-plus ml-3"></i></a>
+
+      </div>
+      <% if(!currentUser){ %>
+        <div>
+          <a class=" btn   mx-2 my-2 shadow-lg" id="btnn" href="/register"><b>Sign Up</b></a>
+        </div>
+        <div>
+          <a class=" btn   mx-2 my-2 shadow-lg" id="btnn" href="/login"><b>Log In</b></a>
+        </div>
+        <% } %>
+          <div>
+            <% if(currentUser){ %>
+              <img class="btn rounded-circle m-0 p-0 shadow-lg" src="<%= currentUser.thumbnail %> " id="dp" width="50px"
+                height="50px" alt="">
+              <a class="   my-2" href="/profile/<%= currentUser._id %> ">
+                <i class="fas fa-sort-down" id="profiledropdown"></i>
+              </a>
+              <% }else{ %>
+
+                <img class="btn rounded-circle m-0 p-0 shadow-lg"
+                  src="https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+                  id="dp" width="50px" height="50px" alt="">
+                <% } %>
+          </div>
+
+
+
+    </div>
+  </div>
+
+  </div>
+</nav>

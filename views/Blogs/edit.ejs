@@ -1,0 +1,82 @@
+
+   
+    <% layout('layout/boilerplate')%>
+    <style>
+    body{
+        background-color: hsl(171, 100%, 41%);
+       }
+       #colort{
+         color: hsl(171, 100%, 41%);
+     }
+       #template{
+           max-width: 700px;
+           display:grid;
+           border-radius: 30px;  
+       }
+       #image{
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        max-height: 200px;
+       }
+       #undernav ul li a{
+  text-decoration-line: none;
+  color: #fff;
+}
+    </style>
+    <div class="container-fluid row justify-content-center">
+        <div class=" d-flex " id="template">
+            <a class="btn btn-light rounded-pill mt-0 mb-3 pb-1 shadow-lg" id="colort" href="/main"><i class="fas fa-arrow-left mr-3"></i><b><strong>Main Menu</strong></b> </i></a>
+        </div>
+        <div class=" card mt-0 p-0 mb-1 shadow-lg" id="template">
+            <img class="card-img-top mx-0 img-fluid" id="image" src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80" alt="" >
+            
+              <div class="card-body">
+                <form action="/main/<%= posts._id %>?_method=PUT" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="title"><strong>Title</strong></label>
+                        <input class="form-control" type="text" id="title" name="posts[title]" value="<%= posts.title %> " required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="content"><strong>Content</strong></label>
+                        <textarea class="form-control" name="posts[content]" id="content" cols="30" rows="3" required><%= posts.content %> </textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-file custom-file">
+                            <input type="file" class="form-file-input" id="image" name="image" multiple>
+                            <label class="form-file-label my-2" for="image">
+                                <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                                <span class="form-file-button "><i class="fas fa-images fa-2x"></i></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <% posts.image.forEach(function(img, i) {  %>
+                                <div>
+                                <img src="<%=img.url %>" class="img-thumbnail" alt="">
+                                </div>
+                                <div>
+                                <div class="form-check-inline">
+                                    <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                                </div>
+                                <label for="image-<%=i%>">Delete?</label>
+                                </div>
+                        
+                        <% })%>
+                    </div>
+                   
+              </div> 
+              
+        </div>
+        <div class=" d-flex justify-content-end" id="template">
+                <button class="btn btn-light rounded-pill mb-2 my-2 shadow-lg" id="colort"><b><strong>Edit</strong></b> <i class="fas fa-edit ml-3"></i></button>
+            </form>
+        </div>
+       
+    </div>
+    

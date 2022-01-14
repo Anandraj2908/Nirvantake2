@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirvan</title>
+    <script src="https://kit.fontawesome.com/157043c484.js" crossorigin="anonymous"></script>
+    <link m-3 rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <style>
+        body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://res.cloudinary.com/yelpcampbyanand/image/upload/v1635623409/daniel-leone-v7daTKlZzaw-unsplash_yl8vb6.jpg");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+.cover-container {
+  max-width: 60vw;
+}
+
+#nav-link {
+    padding: 0.25rem 0;
+    font-weight: 800;
+    font-size: large;
+    color: white;
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+}
+#nav-link:hover{
+    color:rgba(156, 152, 152, 0.692) ;
+}
+#logo{
+    color:white ;
+    font-size: 60px;
+    
+}
+#explore{
+    color: white;
+    text-decoration-line: none;
+}
+#explore:hover{
+    color: rgba(156, 152, 152, 0.692);
+}
+#tech{
+    color: rgba(156, 152, 152, 0.692);
+}
+
+
+.btn-secondary, .btn-secondary:hover{
+    color: #333;
+    text-shadow: none;
+}
+#anand{
+    font-size: x-large;
+}
+@media(max-width:390px){
+    #logo{
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+    #nav-link{
+        margin-top: 2px;
+    }
+}
+    </style>
+</head>
+
+<body class="d-flex text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100  mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-left mb-0" id="logo">NIRVAN<span><i id="tech">.tech</i></span></h3>
+                <nav class="nav nav-masthead justify-content-center float-md-right">
+                    <a class="nav-link mx-3 mt-2" id="nav-link"  href="/main"><i class="far fa-compass mr-2"></i>Explore</a>
+                        <% if(!currentUser){ %> 
+                        <a class="nav-link mx-3 mt-2" id="nav-link" href="/register"><i class="fas fa-user-plus mr-2"></i>Get Started</a>
+                        <a class="nav-link mx-3 mt-2 mb-5" id="nav-link" href="/login"><i class="fas fa-sign-in-alt mr-2"></i>Log In</a>
+                        <% }else{ %> 
+                        <a class="nav-link mx-3 mt-2" id="nav-link" href="/logout"><i class="fas fa-sign-out-alt mr-2"></i>Log Out</a>
+                        <a class="nav-link mx-3 mt-2 mb-5 pb-5" id="nav-link" href="/profile/"><i class="fas fa-user-alt mr-2"></i>Profile</a>
+                        <% } %> 
+                   
+                </nav>
+            </div>
+        </header>
+        <main class="px-3">
+            <h1><a class="m-5 " id="explore"  href="/main"><i class="far fa-compass fa-3x mr-2"></i></a></h1>
+            <h1><a class="m-5" id="explore"  href="/main">Explore</a></h1>
+            <p class="lead"> Welcome to NIRVAN! <br>A practical blog for impractical peoples. <br></p>
+            <p class="mt-5">
+                Nirvan.tech is made with love for you  by Anand & team.
+                This is a blog post, news, and social media combined website.If you have access to desktop do checkout my website on it.It really looks different from the mobile version.
+                This website is made to showcase my website-making skills to my friends, family, and loved ones.
+                As I am, just a new web developer, so I don't know much about how to keep my website secure,
+                which makes it little unsecure. But that won’t affect a good user experience.
+                So, click the explore button to explore NIRVAN.tech. Keep Smiling<i class="far fa-smile ml-1 mr-4"></i> <sub><sub id="anand">- Anand Raj</sub></sub>
+            </p>
+            
+        </main>
+
+        <footer class="mt-auto text-white-50">
+            <p>&copy; NIRVAN 2021 </p>
+        </footer>
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

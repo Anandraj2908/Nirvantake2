@@ -1,0 +1,126 @@
+<style>
+    #container {
+        max-width: 900px;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    #imagediv {
+        max-width: 291.71px;
+        max-height: 550px;
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+
+    #texture {
+        border-bottom-left-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+
+    #container2 {
+        max-width: 500px;
+    }
+
+    @media(max-width:768px) {
+        #texture {
+            max-width: 170px;
+            height: 400px;
+        }
+
+        #imagediv {
+            max-width: 170px;
+        }
+
+        #container {
+            height: 400px;
+
+        }
+
+        #container2 {
+            max-height: 400px;
+        }
+
+        #font {
+            font-size: x-large;
+        }
+    }
+
+    @media(max-width:490px) {
+        #box {
+            display: flex;
+        }
+
+        #imagediv {
+            display: none;
+        }
+
+        #container {
+            background-image: url('https://images.unsplash.com/photo-1635104590867-ae4aedd7f374?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+        }
+    }
+</style>
+<% layout('layout/boilerplate')%>
+    <%- include('../partials/flash')%>
+        <div class="container shadow-lg p-0 my-5" id="container">
+            <div class="alert alert-warning" role="alert">
+                Google and Facebook SignUp are currently under maintenance.
+            </div>
+            <div class="row p-0" id="box">
+                <div class="col p-0" id="imagediv">
+                    <img class="img-fluid" id="texture"
+                        src="https://images.unsplash.com/photo-1525923838299-2312b60f6d69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
+                        alt="">
+                </div>
+                <div class="col container-fluid mx-5  mt-3" id="container2">
+                    <form action="/register" method="POST" class="validated-form" novalidate
+                        enctype="multipart/form-data">
+                        <h1 class="mb-3">Sign Up</h1>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-file custom-file">
+                                <input type="file" class="form-file-input" id="thumbnail" name="thumbnail" required>
+                                <label class="form-file-label my-2" for="thumbnail">
+                                    <span class="form-file-text custom-file-label">Profile Photo</span>
+                                    <span class="form-file-button "><i class="fas fa-images fa-2x"></i></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mt-4">
+                            <button class="btn btn-dark"><i class="fas fa-check fa-lg"></i></button>
+                        </div>
+
+                        <div class="row justify-content-md-center">
+                            <div class="col-4 m-0 p-0">
+                                <hr>
+                            </div>
+                            <div class="col-auto my-1 px-3">OR</div>
+                            <div class="col-4 m-0 p-0">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <a class="text-dark " href="/auth/google"><i class="fab fa-google fa-3x col-4"
+                                    id="font"></i></a>
+                            <a class="text-dark " href="/auth/facebook"><i class="fab fa-facebook fa-3x col-4"
+                                    id="font"></i></a>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+        <!--         -->
